@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All-In-One Toolkit | Video & PDF Tools</title>
+    <meta name="description" content="Your free online destination for a suite of powerful video and PDF tools. Convert, compress, edit, and more, directly in your browser.">
+    <meta name="keywords" content="video tools, pdf tools, online converter, video compressor, pdf editor, free tools">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #4A90E2;
+            --primary-hover: #357ABD;
+            --secondary-color: #50E3C2;
+            --background-color: #F4F7FC;
+            --text-color: #333;
+            --light-text-color: #667;
+            --container-bg: #FFFFFF;
+            --border-color: #EAEAEA;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Header & Navigation */
+        .navbar {
+            background-color: var(--container-bg);
+            padding: 1rem 2rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 5rem 1.5rem;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        /* Main Content */
+        main {
+            flex: 1;
+            padding: 2.5rem 1.5rem;
+        }
+
+        .tools-section {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .tools-section h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--text-color);
+            text-align: center;
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+        
+        .tools-section h2::after {
+            content: '';
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-color);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        /* Tool Card Styling */
+        .tool-card {
+            background-color: var(--container-bg);
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.07);
+            padding: 2rem 1.5rem;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            color: var(--text-color);
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.1);
+        }
+        
+        .tool-card .icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .tool-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 0 0 0.5rem 0;
+        }
+        
+        .tool-card p {
+            font-size: 0.95rem;
+            color: var(--light-text-color);
+            margin: 0;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            background-color: #343a40;
+            color: #f8f9fa;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 767px) {
+            .hero h1 { font-size: 2.2rem; }
+            .hero p { font-size: 1.1rem; }
+            main { padding: 2rem 1rem; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <a href="index.html" class="logo">All-In-One Toolkit</a>
+        <!-- You can add navigation links here if needed -->
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Powerful Tools for Your Files</h1>
+            <p>Free, fast, and secure online tools to handle your video and PDF needs without any software installation.</p>
+        </section>
+
+        <section class="tools-section">
+            <h2>Video Tools</h2>
+            <div class="tools-grid">
+               <!-- The <a> tag makes the entire card a clickable link -->
+<a href="pro-video-compressor.html" class="tool-card">
+    
+    <!-- This is the content inside the link -->
+    <div class="icon">🎬</div>
+    <h3>Pro Video Compressor</h3>
+    <p>Reduce video file size while maintaining optimal quality.</p>
+
+</a>
+                
+                <a href="#" class="tool-card">
+                    <div class="icon">🔄</div>
+                    <h3>Video Converter</h3>
+                    <p>Convert your videos to different formats like MP4, AVI, MOV.</p>
+                </a>
+                
+                <a href="#" class="tool-card">
+                    <div class="icon">✂️</div>
+                    <h3>Video Trimmer</h3>
+                    <p>Cut and trim video clips to get the perfect length.</p>
+                </a>
+                
+                <a href="#" class="tool-card">
+                    <div class="icon">🖼️</div>
+                    <h3>Video to GIF</h3>
+                    <p>Create animated GIFs from a section of your video.</p>
+                </a>
+            </div>
+
+            <h2>PDF Tools</h2>
+            <div class="tools-grid">
+                <a href="#" class="tool-card">
+                    <div class="icon">📑</div>
+                    <h3>Merge PDF</h3>
+                    <p>Combine multiple PDF documents into a single file.</p>
+                </a>
+                
+                <a href="#" class="tool-card">
+                    <div class="icon">🔪</div>
+                    <h3>Split PDF</h3>
+                    <p>Extract one or more pages from your PDF document.</p>
+                </a>
+                
+                <a href="#" class="tool-card">
+                    <div class="icon">🔒</div>
+                    <h3>Protect PDF</h3>
+                    <p>Add a password to your PDF to restrict access.</p>
+                </a>
+                
+                <a href="#" class="tool-card">
+                    <div class="icon">✏️</div>
+                    <h3>PDF to Word</h3>
+                    <p>Convert your PDF files into editable Word documents.</p>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Your Website Name. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
