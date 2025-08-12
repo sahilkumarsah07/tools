@@ -1,0 +1,519 @@
+Html
+download
+content_copy
+expand_less
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pro Video Compressor - Free & Online Video Optimizer</title>
+    <meta name="description" content="A professional, free, and responsive online tool to compress your video files. Select a quality level and optimize your videos directly in your browser without compromising quality.">
+    <meta name="keywords" content="video compressor, compress video, online video tool, video optimization, reduce video size, html video compressor, responsive video tool">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Google AdSense Script - Replace with your own publisher ID -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
+     crossorigin="anonymous"></script>
+
+    <style>
+        :root {
+            --primary-color: #4A90E2;
+            --primary-hover: #357ABD;
+            --secondary-color: #50E3C2;
+            --background-color: #F4F7FC;
+            --text-color: #333;
+            --light-text-color: #667;
+            --container-bg: #FFFFFF;
+            --border-color: #EAEAEA;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            text-align: center;
+            padding: 2rem 1rem;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        
+        header h1 {
+            margin: 0;
+            font-weight: 700;
+            font-size: 2.5rem;
+        }
+        
+        header p {
+            margin: 0.5rem 0 0;
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        main {
+            flex: 1;
+            padding: 1.5rem;
+        }
+
+        .tool-container {
+            max-width: 850px;
+            margin: 0 auto;
+            background-color: var(--container-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            border: 1px solid var(--border-color);
+        }
+        
+        .step {
+            margin-bottom: 2.5rem;
+        }
+
+        .step h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.75rem;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Custom File Input */
+        .file-input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        #video-input {
+            opacity: 0;
+            position: absolute;
+            width: 0.1px;
+            height: 0.1px;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .file-input-label {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-weight: 500;
+        }
+        
+        .file-input-label:hover {
+            background-color: var(--primary-hover);
+        }
+        
+        #input-file-details {
+            color: var(--light-text-color);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* Settings Section */
+        .settings-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        #compression-slider {
+            width: 100%;
+            cursor: pointer;
+            -webkit-appearance: none;
+            appearance: none;
+            height: 8px;
+            background: #ddd;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        #compression-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: var(--secondary-color);
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        #compression-slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            background: var(--secondary-color);
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        
+        label[for="compression-slider"] {
+            display: block;
+            margin-bottom: 0.75rem;
+            font-weight: 500;
+        }
+
+        .slider-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: var(--light-text-color);
+            padding: 0 5px;
+            margin-top: 0.5rem;
+        }
+
+        /* Action Section */
+        .action-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        #compress-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.8rem 2rem;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.1s;
+        }
+
+        #compress-button:hover {
+            background-color: var(--primary-hover);
+        }
+
+        #compress-button:disabled {
+            background-color: #aab8c5;
+            cursor: not-allowed;
+        }
+
+        /* Loading Spinner */
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid var(--primary-color);
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+            display: none; /* Hidden by default */
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        #status-message {
+            flex-grow: 1;
+            text-align: left;
+            font-weight: 500;
+        }
+
+        /* Output Section */
+        #output-video {
+            width: 100%;
+            max-width: 100%;
+            margin-top: 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background-color: #000;
+        }
+
+        #download-link {
+            display: block;
+            text-align: center;
+            margin-top: 1.5rem;
+            padding: 0.8rem;
+            background-color: #28a745;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        #download-link:hover {
+            background-color: #218838;
+        }
+        
+        #output-file-details {
+            margin-top: 1rem;
+            padding: 0.75rem;
+            border-radius: 8px;
+            background-color: #e9f5ff;
+            color: #005a9e;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        /* Ads and Footer */
+        .ad-space {
+            width: 100%;
+            max-width: 850px;
+            min-height: 90px;
+            background-color: #e9ecef;
+            margin: 2rem auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--light-text-color);
+            border: 1px dashed #ccc;
+            border-radius: 8px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            background-color: #343a40;
+            color: #f8f9fa;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 767px) {
+            header h1 { font-size: 2rem; }
+            header p { font-size: 1rem; }
+            main { padding: 1rem; }
+            .tool-container { padding: 1.5rem; }
+        }
+
+        @media (min-width: 768px) {
+            .settings-grid {
+                grid-template-columns: 1fr 1fr;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Pro Video Compressor</h1>
+        <p>Optimize video files online with superior quality and speed.</p>
+    </header>
+
+    <main>
+        <!-- Top Advertisement -->
+        <div class="ad-space ad-space-top">
+            <!-- AdSense Ad Unit -->
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-YOUR_PUBLISHER_ID" data-ad-slot="YOUR_AD_SLOT_ID_1" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+
+        <div class="tool-container">
+            <div class="step">
+                <h2>Step 1: Upload Your Video</h2>
+                <div class="file-input-wrapper">
+                    <label for="video-input" class="file-input-label">Choose File</label>
+                    <input type="file" id="video-input" accept="video/*">
+                    <span id="input-file-details">No file selected</span>
+                </div>
+            </div>
+
+            <div class="step">
+                <h2>Step 2: Configure Settings</h2>
+                <div class="settings-grid">
+                    <div>
+                        <label for="compression-slider">Quality Level: <span id="compression-value" style="font-weight:bold; color:var(--primary-color);">Medium</span></label>
+                        <input type="range" id="compression-slider" min="1" max="5" value="3" title="Adjust video quality">
+                        <div class="slider-labels">
+                            <span>Low</span>
+                            <span>Medium</span>
+                            <span>High</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <h2>Step 3: Compress</h2>
+                 <div class="action-wrapper">
+                    <button id="compress-button">Compress Video</button>
+                    <div class="loader" id="loader"></div>
+                    <span id="status-message"></span>
+                </div>
+            </div>
+
+            <div class="step" id="output-section" style="display:none;">
+                <h2>Step 4: Download</h2>
+                <video id="output-video" controls></video>
+                <a id="download-link" href="#" download="compressed_video.mp4">Download Compressed Video</a>
+                <p id="output-file-details"></p>
+            </div>
+        </div>
+
+        <!-- Bottom Advertisement -->
+        <div class="ad-space ad-space-bottom">
+            <!-- AdSense Ad Unit -->
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-YOUR_PUBLISHER_ID" data-ad-slot="YOUR_AD_SLOT_ID_2" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Your Website Name. All Rights Reserved.</p>
+    </footer>
+
+    <!-- FFmpeg.wasm library -->
+    <script src="https://unpkg.com/@ffmpeg/ffmpeg@0.11.0/dist/ffmpeg.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script>
+        const { createFFmpeg, fetchFile } = FFmpeg;
+        let ffmpeg;
+
+        // UI Elements
+        const videoInput = document.getElementById('video-input');
+        const inputFileDetails = document.getElementById('input-file-details');
+        const compressionSlider = document.getElementById('compression-slider');
+        const compressionValueSpan = document.getElementById('compression-value');
+        const compressButton = document.getElementById('compress-button');
+        const loader = document.getElementById('loader');
+        const statusMessage = document.getElementById('status-message');
+        const outputSection = document.getElementById('output-section');
+        const outputVideo = document.getElementById('output-video');
+        const downloadLink = document.getElementById('download-link');
+        const outputFileDetails = document.getElementById('output-file-details');
+        
+        // CRF values: Lower is higher quality, higher is smaller size.
+        const compressionLevels = {
+            1: { name: 'Low', crf: 35 },
+            2: { name: 'Medium-Low', crf: 30 },
+            3: { name: 'Medium', crf: 25 },
+            4: { name: 'Medium-High', crf: 22 },
+            5: { name: 'High', crf: 18 }
+        };
+
+        let selectedFile = null;
+
+        // Event Listeners
+        videoInput.addEventListener('change', (e) => {
+            selectedFile = e.target.files[0];
+            if (selectedFile) {
+                inputFileDetails.textContent = `File: ${selectedFile.name}`;
+                outputSection.style.display = 'none';
+                statusMessage.textContent = '';
+            } else {
+                inputFileDetails.textContent = 'No file selected';
+            }
+        });
+
+        compressionSlider.addEventListener('input', (e) => {
+            const level = compressionLevels[e.target.value];
+            compressionValueSpan.textContent = level.name;
+        });
+
+        compressButton.addEventListener('click', async () => {
+            if (!selectedFile) {
+                statusMessage.textContent = 'Please select a video file first.';
+                return;
+            }
+            
+            setProcessingState(true);
+
+            try {
+                await loadFFmpeg();
+
+                const { name } = selectedFile;
+                const outputFileName = `compressed_${Date.now()}_${name}`;
+                const compressionLevel = compressionLevels[compressionSlider.value];
+
+                statusMessage.textContent = 'Reading file...';
+                ffmpeg.FS('writeFile', name, await fetchFile(selectedFile));
+
+                statusMessage.textContent = `Compressing... This may take a moment.`;
+                await ffmpeg.run('-i', name, '-vcodec', 'libx264', '-crf', String(compressionLevel.crf), outputFileName);
+
+                statusMessage.textContent = 'Finalizing...';
+                const data = ffmpeg.FS('readFile', outputFileName);
+                const videoUrl = URL.createObjectURL(new Blob([data.buffer], { type: 'video/mp4' }));
+
+                displayOutput(videoUrl, outputFileName, data.buffer.byteLength);
+                
+                statusMessage.textContent = 'Compression Complete!';
+                ffmpeg.FS('unlink', name);
+                ffmpeg.FS('unlink', outputFileName);
+
+            } catch (error) {
+                console.error(error);
+                statusMessage.textContent = 'An error occurred. The file might be unsupported.';
+            } finally {
+                setProcessingState(false);
+            }
+        });
+        
+        // Helper Functions
+        const loadFFmpeg = async () => {
+            if (!ffmpeg || !ffmpeg.isLoaded()) {
+                statusMessage.textContent = 'Loading video engine...';
+                ffmpeg = createFFmpeg({
+                    log: false, // Set to true for detailed logs in console
+                    corePath: "https://unpkg.com/@ffmpeg/ffmpeg-core@0.11.0/dist/ffmpeg-core.js",
+                });
+                await ffmpeg.load();
+            }
+        };
+
+        function setProcessingState(isProcessing) {
+            if (isProcessing) {
+                compressButton.disabled = true;
+                compressButton.textContent = 'Processing...';
+                loader.style.display = 'block';
+                outputSection.style.display = 'none';
+            } else {
+                compressButton.disabled = false;
+                compressButton.textContent = 'Compress Video';
+                loader.style.display = 'none';
+            }
+        }
+        
+        function displayOutput(url, fileName, newSizeBytes) {
+            outputSection.style.display = 'block';
+            outputVideo.src = url;
+            downloadLink.href = url;
+            downloadLink.download = fileName;
+
+            const originalSizeMB = (selectedFile.size / 1024 / 1024);
+            const newSizeMB = (newSizeBytes / 1024 / 1024);
+            const reduction = 100 - (newSizeMB / originalSizeMB * 100);
+
+            outputFileDetails.textContent = `Original: ${originalSizeMB.toFixed(2)} MB | New: ${newSizeMB.toFixed(2)} MB | Reduction: ${reduction.toFixed(1)}%`;
+        }
+
+        // Initial state
+        compressionValueSpan.textContent = compressionLevels[compressionSlider.value].name;
+
+    </script>
+</body>
+</html>
